@@ -8,7 +8,7 @@ const navItems = [
   { name: 'Create Event Bill', path: '/event/create', icon: Calendar },
 ];
 
-export function Sidebar() {
+const Sidebar = () => {
   return (
     <div className="h-screen w-64 bg-slate-900 text-white flex flex-col fixed left-0 top-0">
       <div className="p-6 border-b border-slate-700">
@@ -46,4 +46,6 @@ export function Sidebar() {
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;

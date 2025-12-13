@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { formatCurrency } from '../utils/formatters';
 import { cn } from '../utils/cn';
 
-export function Dashboard() {
+const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [activeTab, setActiveTab] = useState<'corporate' | 'event'>('corporate');
@@ -147,7 +147,7 @@ export function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
 function FileTextOrCalendar({ activeTab, className }: { activeTab: string, className?: string }) {
   if (activeTab === 'corporate') {
@@ -163,3 +163,5 @@ function FileTextOrCalendar({ activeTab, className }: { activeTab: string, class
     </svg>
   )
 }
+
+export default Dashboard;

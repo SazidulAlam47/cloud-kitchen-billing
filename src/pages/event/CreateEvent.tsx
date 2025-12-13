@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { addEventBill } from '../../redux/features/billing/billingSlice';
-import { EventForm } from './EventForm';
+import EventForm from './EventForm';
 import type { EventBill } from '../../types';
 
-export function CreateEvent() {
+const CreateEvent = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -14,4 +14,6 @@ export function CreateEvent() {
   };
 
   return <EventForm onSubmit={handleSubmit} />;
-}
+};
+
+export default CreateEvent;

@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MainLayout } from './components/layout/MainLayout';
-import { Dashboard } from './pages/Dashboard';
-import { CreateCorporate } from './pages/corporate/CreateCorporate';
-import { EditCorporate } from './pages/corporate/EditCorporate';
-import { CreateEvent } from './pages/event/CreateEvent';
-import { EditEvent } from './pages/event/EditEvent';
+import MainLayout from './components/layout/MainLayout';
+import Dashboard from './pages/Dashboard';
+import CreateCorporate from './pages/corporate/CreateCorporate';
+import EditCorporate from './pages/corporate/EditCorporate';
+import CreateEvent from './pages/event/CreateEvent';
+import EditEvent from './pages/event/EditEvent';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>

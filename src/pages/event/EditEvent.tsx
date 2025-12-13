@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { updateEventBill } from '../../redux/features/billing/billingSlice';
-import { EventForm } from './EventForm';
+import EventForm from './EventForm';
 import type { EventBill } from '../../types';
 
-export function EditEvent() {
+const EditEvent = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -31,4 +31,6 @@ export function EditEvent() {
   if (!bill) return <div>Loading...</div>;
 
   return <EventForm initialData={bill} onSubmit={handleSubmit} isEditing />;
-}
+};
+
+export default EditEvent;
