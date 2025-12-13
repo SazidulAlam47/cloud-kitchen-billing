@@ -1,10 +1,27 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { BillingState, CorporateBill, EventBill } from '../../../types';
+import { INITIAL_CORPORATE_BILLS, INITIAL_EVENT_BILLS } from '../../../data/chefData';
 
-const initialState: BillingState = {
-  corporateBills: JSON.parse(localStorage.getItem('corporateBills') || '[]'),
-  eventBills: JSON.parse(localStorage.getItem('eventBills') || '[]'),
+// Safe check for localStorage
+const loadState = (): BillingState => {
+  try {
+    const serializedState = localStorage.getItem('billingState');
+    if (serializedState === null) {
+      return {
+        corporateBills: INITIAL_CORPORATE_BILLS as unknown as CorporateBill[],
+        eventBills: INITIAL_EVENT_BILLS as unknown as EventBill[],
+      };
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return {
+      corporateBills: INITIAL_CORPORATE_BILLS as unknown as CorporateBill[],
+      eventBills: INITIAL_EVENT_BILLS as unknown as EventBill[],
+    };
+  }
 };
+
+const initialState: BillingState = loadState();
 
 const billingSlice = createSlice({
   name: 'billing',

@@ -4,9 +4,11 @@ import { Plus, Trash2, Save, ArrowLeft } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../../components/ui/Button';
 import UInput from '../../components/form/UInput';
+import USelect from '../../components/form/USelect';
 import type { EventBill } from '../../types';
 import { amountInWords, formatCurrency } from '../../utils/formatters';
 import { DEFAULT_EVENT_ITEM } from '../../constant';
+import { PACKAGE_TYPES } from '../../data/chefData';
 
 interface EventFormFieldsProps {
     isEditing: boolean;
@@ -98,7 +100,18 @@ const EventFormFields = ({ isEditing, onCancel }: EventFormFieldsProps) => {
                                             <UInput name={`items.${index}.packageName`} placeholder="Package Name" className="bg-white" />
                                         </div>
                                         <div className="col-span-3 space-y-2">
-                                            <UInput name={`items.${index}.packageType`} placeholder="Type" className="bg-white mb-1" />
+                                            <USelect
+                                                name={`items.${index}.packageType`}
+                                                placeholder="Type"
+                                                options={PACKAGE_TYPES.map(p => ({ label: p.name, value: p.name }))}
+                                                className="bg-white mb-1"
+                                                onChange={(val) => {
+                                                    const pkg = PACKAGE_TYPES.find(p => p.name === val);
+                                                    if (pkg) {
+                                                        setValue(`items.${index}.unitPrice`, pkg.defaultUnitPrice);
+                                                    }
+                                                }}
+                                            />
                                             <UInput name={`items.${index}.description`} placeholder="Description" className="bg-white text-xs" />
                                         </div>
                                         <div className="col-span-2">

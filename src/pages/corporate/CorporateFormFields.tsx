@@ -4,9 +4,11 @@ import { Plus, Trash2, Save, ArrowLeft } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from '../../components/ui/Button';
 import UInput from '../../components/form/UInput';
+import USelect from '../../components/form/USelect';
 import type { CorporateBill } from '../../types';
 import { amountInWords, formatCurrency } from '../../utils/formatters';
 import { DEFAULT_CORPORATE_ITEM } from '../../constant';
+import { PACKAGE_TYPES } from '../../data/chefData';
 
 interface CorporateFormFieldsProps {
     isEditing: boolean;
@@ -98,7 +100,18 @@ const CorporateFormFields = ({ isEditing, onCancel }: CorporateFormFieldsProps) 
                                             <UInput name={`items.${index}.date`} type="date" className="bg-white" />
                                         </div>
                                         <div className="col-span-3">
-                                            <UInput name={`items.${index}.packageType`} placeholder="Package Type" className="bg-white" />
+                                            <USelect
+                                                name={`items.${index}.packageType`}
+                                                placeholder="Select Package"
+                                                options={PACKAGE_TYPES.map(p => ({ label: p.name, value: p.name }))}
+                                                className="bg-white"
+                                                onChange={(val) => {
+                                                    const pkg = PACKAGE_TYPES.find(p => p.name === val);
+                                                    if (pkg) {
+                                                        setValue(`items.${index}.unitPrice`, pkg.defaultUnitPrice);
+                                                    }
+                                                }}
+                                            />
                                         </div>
                                         <div className="col-span-2">
                                             <UInput name={`items.${index}.persons`} type="number" min="0" className="text-right bg-white" />
