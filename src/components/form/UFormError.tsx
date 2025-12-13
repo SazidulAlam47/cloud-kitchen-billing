@@ -1,12 +1,12 @@
-interface UFromErrorProps {
+interface UFormErrorProps {
     error?: {
         message?: string;
     };
 }
 
-const UFromError = ({ error }: UFromErrorProps) => {
+const UFormError = ({ error }: UFormErrorProps) => {
     if (!error?.message) return null;
     return <small className="text-red-500 block mt-1">{error.message}</small>;
 };
 
-export default UFromError;
+export default UFormError;

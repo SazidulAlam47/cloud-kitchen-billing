@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useImperativeHandle } from 'react';
 import type { ReactNode, RefObject } from 'react';
 import {
@@ -8,8 +7,8 @@ import {
 } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 
-export type TUFromFncRef = {
-    resetFrom: () => void;
+export type TUFormFncRef = {
+    resetForm: () => void;
 };
 
 type TFormConfig = {
@@ -18,20 +17,20 @@ type TFormConfig = {
     values?: Record<string, unknown>;
 };
 
-type UFromProps = {
+type UFormProps = {
     children: ReactNode;
     onSubmit: SubmitHandler<any>;
     fncRef?: RefObject<unknown>;
 } & TFormConfig;
 
-const UFrom = ({
+const UForm = ({
     children,
     onSubmit,
     defaultValues,
     resolver,
     fncRef = undefined,
     values,
-}: UFromProps) => {
+}: UFormProps) => {
     const formConfig: TFormConfig = {};
 
     if (defaultValues) {
@@ -46,12 +45,12 @@ const UFrom = ({
 
     const methods = useForm(formConfig);
 
-    const resetFrom = () => {
+    const resetForm = () => {
         methods.reset();
     };
 
     useImperativeHandle(fncRef, () => ({
-        resetFrom,
+        resetForm,
     }));
 
     return (
@@ -63,4 +62,4 @@ const UFrom = ({
     );
 };
 
-export default UFrom;
+export default UForm;
