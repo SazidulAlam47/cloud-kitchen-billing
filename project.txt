@@ -1,0 +1,246 @@
+**After Completing this project, share your git repo and render live link.
+Otherwise we don’t count your submission**
+
+### 1. Project Name & Overview
+
+**Project Title:** Cloud Kitchen Billing Dashboard (Frontend Only)
+
+**Goal:**
+Build a single-page web application for a Cloud Kitchen Billing System. The system manages two types of bills:
+
+1. Corporate Billing – recurring meals delivered on selected dates.
+2. Random Billing (Personal Event/Occasion) – one-off events with customized packages.
+
+The app should allow an admin user to:
+
+* Create, view, edit, and delete billing records.
+* Manage packages for Corporate and Personal/Event billing.
+* Dynamically calculate totals and show the amount in words.
+
+The focus is on frontend skills (JavaScript, React, Tailwind CSS, Redux, UI/UX fundamentals).
+No backend is required; use local state or Redux store, and optionally mock APIs with JSON.
+
+---
+
+
+
+### 2. User Stories (Requirements)
+
+#### 2.1 Common / Global
+
+As an admin, I want a simple dashboard where I can:
+
+* Switch between “Corporate Billing” and “Event Billing”.
+* See a list of all bills (table or cards).
+* Click on any bill to view details and edit/delete.
+
+As an admin, I want basic validation for required fields (e.g., contact no, name, date, package list).
+
+---
+
+
+
+### 2.2 Corporate Billing
+
+**Scenario:**
+Corporate clients purchase packages on multiple dates in a month. Each date entry includes number of persons, unit price, and total.
+
+**Required fields for Corporate bill:**
+
+* Corporate Name (e.g., X Ltd)
+* Contact Person (e.g., XYZ)
+* Contact No (e.g., 0178888)
+* Billing Date (e.g., 04/01/2025)
+* Billing Type: Corporate
+* Number of Packages (Summary) – calculated or input based on total persons
+* Line Items (Dates-wise consumption):
+
+  * Service Date (e.g., 01/01/2025)
+  * Package Type (Economy / Standard / Premium)
+  * Number of Persons
+  * Unit Price (BDT)
+  * Line Total (auto-calculated: persons × unit price)
+
+**Example (given):**
+(Shown as an image invoice with labels such as)
+
+* Bill
+* Contact Person
+* Contact No
+* Date
+* Number of Pax
+* Sl. No
+* Date
+* Person
+* Unit Price
+* Total BDT
+* Total Amount
+* Amount in Words
+* Sincerely
+* CEO
+* MetroChef
+
+
+
+### 2.3 Random Billing (Personal Event / Occasion)
+
+**Scenario:**
+A person or company orders for one specific event, with one or more food packages.
+
+**Required fields for Event bill:**
+
+* Event Name (e.g., X Event)
+* Contact Person (e.g., XYZ)
+* Contact No (e.g., 0178888)
+* Event Date (e.g., 04/01/2025)
+* Billing Type: Event
+* Number of Packages (Total persons or package count)
+* Package Items:
+
+  * Package Name (e.g., Package-1, or custom text)
+  * Package Type (Economy / Standard / Premium or custom)
+  * Description / Name of food items (short text)
+  * Number of Persons
+  * Unit Price (BDT)
+  * Line Total (auto: persons × unit price)
+
+**Example (given):**
+
+* Event Name: X event
+* Contact Person: XYZ
+* Contact No: 0178888
+* Date: 04/01/2025
+* Number of Packages: 60
+
+1. Package-1 (Name of food items) – Persons (30) – Unit price (200 BDT) – Total: 6,000 BDT
+2. Package-2 (Name of food items) – Persons (10) – Unit price (400 BDT) – Total: 4,000 BDT
+
+**Total Amount:** 10,000 BDT
+**Amount in words:** BDT – Ten Thousand Only
+
+Same as corporate: calculate total & amount in words automatically.
+
+
+
+### 2.4 Admin Actions (CRUD)
+
+For both Corporate and Event billing:
+
+**Create New Bill**
+
+* Form with inputs described above.
+* Add multiple line items (dates or packages) using “Add Row” button.
+
+**Edit Bill**
+
+* Open an existing bill, modify any field.
+
+**Delete Bill**
+
+* Remove a bill with confirmation.
+
+**List View**
+Show a list (table) of all bills with:
+
+* ID / Invoice No
+* Name (Corporate Name / Event Name)
+* Billing Type (Corporate / Event)
+* Date
+* Total Amount
+* Actions: View / Edit / Delete
+
+For simplicity, you can store all bills in a Redux store or React state. No real backend needed.
+
+
+
+### 3. UI/UX Expectations
+
+Ask candidates to show their UI/UX sense, not just code:
+
+* Clean layout using Tailwind CSS.
+* Responsive design (at least works on desktop and basic mobile).
+* Clear separation:
+
+  * Sidebar/Topbar for navigation.
+  * Main content for forms and tables.
+* Use meaningful components:
+
+  * Buttons, inputs, labels, cards, tables.
+* Visual feedback:
+
+  * Disabled “Save” button if required fields are missing.
+  * Error messages under inputs or as small toast (if they want to use a library).
+
+Optional but nice:
+
+* Light theming (e.g., primary colors, consistent typography).
+* Simple icons (e.g., for edit/delete).
+
+
+
+### 4. Technical Requirements
+
+#### 4.1 Stack
+
+* React (with functional components + hooks)
+* Redux or Redux Toolkit for state management
+* Tailwind CSS for styling
+* Plain JavaScript or TypeScript (your choice)
+
+#### 4.2 State Management
+
+Recommended slices in Redux:
+
+* **billing slice**
+
+  * corporateBills: []
+  * eventBills: []
+* **packages slice (optional)**
+
+  * Predefined package types & default unit prices
+
+**Actions:**
+
+* addCorporateBill, updateCorporateBill, deleteCorporateBill
+* addEventBill, updateEventBill, deleteEventBill
+
+---
+
+### 6. Required Features to Test Skills
+
+1. Dashboard layout
+
+* Toggle between Corporate and Event billing.
+* List existing bills.
+
+2. Create Bill form
+
+* Separate forms or tabs for Corporate and Event.
+* Dynamic add/remove line items.
+* Auto-calculation of line totals and grand total.
+* Auto “amount in words” update.
+
+3. Edit/Delete
+
+* Pick a bill from list, edit fields, save.
+* Delete with confirmation.
+
+4. Basic validation
+
+* Highlight missing required fields.
+* Prevent saving invalid form.
+
+5. State Persistence
+
+* Store all data in Redux.
+* Optional: persist to localStorage so reload keeps data.
+
+---
+
+### 8. Extra / Bonus Tasks (Optional)
+
+* Invoice Print View: Print / Download style invoice screen.
+* Filters & Search: Filter bills by date range, billing type, or name.
+* Dark Mode: Simple Tailwind dark mode toggle.
+* Form Wizard: Multi-step form
+  (Step 1: Basic Info, Step 2: Packages, Step 3: Review & Confirm)
