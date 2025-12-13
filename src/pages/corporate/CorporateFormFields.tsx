@@ -6,6 +6,7 @@ import { Button } from '../../components/ui/Button';
 import UInput from '../../components/form/UInput';
 import type { CorporateBill } from '../../types';
 import { amountInWords, formatCurrency } from '../../utils/formatters';
+import { DEFAULT_CORPORATE_ITEM } from '../../constant';
 
 interface CorporateFormFieldsProps {
     isEditing: boolean;
@@ -65,7 +66,7 @@ const CorporateFormFields = ({ isEditing, onCancel }: CorporateFormFieldsProps) 
                     <Button
                         type="button"
                         size="sm"
-                        onClick={() => append({ id: uuidv4(), date: new Date().toISOString().split('T')[0], packageType: 'Standard', persons: 0, unitPrice: 0 })}
+                        onClick={() => append({ id: uuidv4(), date: new Date().toISOString().split('T')[0], ...DEFAULT_CORPORATE_ITEM })}
                     >
                         <Plus className="w-4 h-4 mr-2" />
                         Add Row

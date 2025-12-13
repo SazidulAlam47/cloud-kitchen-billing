@@ -6,6 +6,7 @@ import { Button } from '../../components/ui/Button';
 import UInput from '../../components/form/UInput';
 import type { EventBill } from '../../types';
 import { amountInWords, formatCurrency } from '../../utils/formatters';
+import { DEFAULT_EVENT_ITEM } from '../../constant';
 
 interface EventFormFieldsProps {
     isEditing: boolean;
@@ -65,7 +66,7 @@ const EventFormFields = ({ isEditing, onCancel }: EventFormFieldsProps) => {
                     <Button
                         type="button"
                         size="sm"
-                        onClick={() => append({ id: uuidv4(), packageName: '', packageType: '', description: '', persons: 0, unitPrice: 0 })}
+                        onClick={() => append({ id: uuidv4(), ...DEFAULT_EVENT_ITEM })}
                     >
                         <Plus className="w-4 h-4 mr-2" />
                         Add Package

@@ -6,6 +6,7 @@ import UForm from '../../components/form/UForm';
 import { eventBillSchema } from '../../schema/billingSchemas';
 import type { EventBill } from '../../types';
 import EventFormFields from './EventFormFields';
+import { DEFAULT_EVENT_BILL_VALUES } from '../../constant';
 
 interface EventFormProps {
   initialData?: EventBill;
@@ -17,15 +18,9 @@ const EventForm = ({ initialData, onSubmit, isEditing = false }: EventFormProps)
   const navigate = useNavigate();
 
   const defaultValues = initialData || {
+      ...DEFAULT_EVENT_BILL_VALUES,
       id: uuidv4(),
-      type: 'Event',
-      eventName: '',
-      contactPerson: '',
-      contactNo: '',
       date: new Date().toISOString().split('T')[0],
-      items: [],
-      totalAmount: 0,
-      amountInWords: 'Zero Only',
   };
 
   const handleCancel = () => navigate('/');

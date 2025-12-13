@@ -6,6 +6,7 @@ import UForm from '../../components/form/UForm';
 import { corporateBillSchema } from '../../schema/billingSchemas';
 import type { CorporateBill } from '../../types';
 import CorporateFormFields from './CorporateFormFields';
+import { DEFAULT_CORPORATE_BILL_VALUES } from '../../constant';
 
 interface CorporateFormProps {
   initialData?: CorporateBill;
@@ -17,15 +18,9 @@ const CorporateForm = ({ initialData, onSubmit, isEditing = false }: CorporateFo
   const navigate = useNavigate();
 
   const defaultValues = initialData || {
+      ...DEFAULT_CORPORATE_BILL_VALUES,
       id: uuidv4(),
-      type: 'Corporate',
-      corporateName: '',
-      contactPerson: '',
-      contactNo: '',
       date: new Date().toISOString().split('T')[0],
-      items: [],
-      totalAmount: 0,
-      amountInWords: 'Zero Only',
   };
 
   const handleCancel = () => navigate('/');
