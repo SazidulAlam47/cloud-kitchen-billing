@@ -93,7 +93,7 @@ const EventFormFields = ({ isEditing, onCancel }: EventFormFieldsProps) => {
                                 const lineTotal = (Number(item?.persons) || 0) * (Number(item?.unitPrice) || 0);
 
                                 return (
-                                    <div key={field.id} className="grid grid-cols-12 gap-4 items-center bg-gray-50/50 p-3 rounded-lg border border-gray-100 group hover:border-gray-300 transition-all">
+                                    <div key={field.id} className="grid grid-cols-12 gap-4 items-start bg-gray-50/50 p-3 rounded-lg border border-gray-100 group hover:border-gray-300 transition-all">
                                         <div className="col-span-3 space-y-2">
                                             <UInput name={`items.${index}.packageName`} placeholder="Package Name" className="bg-white" />
                                         </div>
@@ -109,13 +109,13 @@ const EventFormFields = ({ isEditing, onCancel }: EventFormFieldsProps) => {
                                             <button
                                                 type="button"
                                                 onClick={() => remove(index)}
-                                                className="absolute -right-8 top-1/2 -translate-y-1/2 p-1.5 text-gray-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                className="absolute -right-8 top-5 -translate-y-1/2 p-1.5 text-gray-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
                                                 title="Remove Package"
                                             >
                                                 <Trash2 className="w-4 h-4" />
                                             </button>
                                         </div>
-                                        <div className="col-span-2 text-right font-medium text-gray-900 pr-3">
+                                        <div className="col-span-2 flex h-10 items-center justify-end font-medium text-gray-900 pr-3">
                                             {formatCurrency(lineTotal)}
                                         </div>
                                     </div>
