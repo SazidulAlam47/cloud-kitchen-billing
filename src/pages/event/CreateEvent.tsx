@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { addEventBill } from '../../redux/features/billing/billingSlice';
@@ -10,6 +11,7 @@ const CreateEvent = () => {
 
   const handleSubmit = (data: EventBill) => {
     dispatch(addEventBill(data));
+    toast.success('Event bill saved successfully');
     navigate('/');
   };
 

@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -25,6 +26,7 @@ const EditEvent = () => {
 
   const handleSubmit = (data: EventBill) => {
     dispatch(updateEventBill(data));
+    toast.success('Event bill updated successfully');
     navigate('/');
   };
 

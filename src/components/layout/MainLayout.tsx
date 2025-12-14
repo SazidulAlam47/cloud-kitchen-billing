@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Sidebar from './Sidebar';
 
 const MainLayout = () => {
@@ -10,6 +11,7 @@ const MainLayout = () => {
           <Outlet />
         </div>
       </main>
+      <Toaster position="top-center" />
     </div>
   );
 };

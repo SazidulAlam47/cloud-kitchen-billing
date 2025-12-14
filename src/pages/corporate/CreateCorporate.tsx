@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { addCorporateBill } from '../../redux/features/billing/billingSlice';
@@ -10,6 +11,7 @@ const CreateCorporate = () => {
 
   const handleSubmit = (data: CorporateBill) => {
     dispatch(addCorporateBill(data));
+    toast.success('Bill saved successfully');
     navigate('/');
   };
 

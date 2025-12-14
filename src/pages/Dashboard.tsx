@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -40,11 +41,11 @@ const Dashboard = () => {
         } else {
           dispatch(deleteEventBill(id));
         }
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        toast.success(
+          activeTab === 'corporate' 
+            ? 'Corporate bill deleted successfully' 
+            : 'Event bill deleted successfully'
+        );
       }
     })
   };
