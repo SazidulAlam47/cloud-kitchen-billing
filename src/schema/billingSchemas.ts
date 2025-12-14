@@ -1,10 +1,6 @@
 import { z } from 'zod';
 import { BILL_TYPES } from '../constant';
 
-/* -------------------------------------------------------------------------- */
-/*                              Corporate Schemas                             */
-/* -------------------------------------------------------------------------- */
-
 export const corporateItemSchema = z.object({
   date: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Invalid date format",
@@ -26,10 +22,6 @@ export const corporateBillSchema = z.object({
   totalAmount: z.number(),
   amountInWords: z.string(),
 });
-
-/* -------------------------------------------------------------------------- */
-/*                                Event Schemas                               */
-/* -------------------------------------------------------------------------- */
 
 export const eventItemSchema = z.object({
   id: z.string().optional(),

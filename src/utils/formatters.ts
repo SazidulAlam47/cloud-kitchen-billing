@@ -31,17 +31,14 @@ export const amountInWords = (amount: number): string => {
   const convert = (n: number): string => {
     if (n === 0) return '';
     
-    // Billions
     if (n >= 1000000000) {
       return convert(Math.floor(n / 1000000000)) + ' Billion ' + convert(n % 1000000000);
     }
     
-    // Millions
     if (n >= 1000000) {
       return convert(Math.floor(n / 1000000)) + ' Million ' + convert(n % 1000000);
     }
     
-    // Thousands
     if (n >= 1000) {
       return convert(Math.floor(n / 1000)) + ' Thousand ' + convert(n % 1000);
     }

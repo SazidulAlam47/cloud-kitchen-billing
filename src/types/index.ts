@@ -9,7 +9,7 @@ export interface BaseBill {
 
 export interface CorporateItem {
   id: string;
-  date: string; // Service Date
+  date: string;
   packageType: string;
   persons: number;
   unitPrice: number;

@@ -2,7 +2,6 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { BillingState, CorporateBill, EventBill } from '../../../types';
 import { INITIAL_CORPORATE_BILLS, INITIAL_EVENT_BILLS } from '../../../data/chefData';
 
-// Safe check for localStorage
 const loadState = (): BillingState => {
   try {
     const serializedState = localStorage.getItem('billingState');
