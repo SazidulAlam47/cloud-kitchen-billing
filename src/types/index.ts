@@ -15,6 +15,18 @@ export interface CorporateItem {
   unitPrice: number;
 }
 
+export type TRoute = {
+  path: string;
+  element: React.ReactNode;
+};
+
+export type TUserIndexPath = {
+  name?: string;
+  path?: string;
+  element?: React.ReactNode;
+  children?: TUserIndexPath[];
+};
+
 export interface CorporateBill extends BaseBill {
   type: 'Corporate';
   corporateName: string;
