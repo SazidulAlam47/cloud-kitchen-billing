@@ -16,7 +16,7 @@ const CorporateFormFields = ({ isEditing, onCancel }: CorporateFormFieldsProps) 
     const { control, setValue } = useFormContext<CorporateBill>();
     const items = useWatch({ control, name: 'items' });
 
-    // Calculate totals whenever items change
+
     useEffect(() => {
         const total = items?.reduce((sum, item) => {
             const lineTotal = (Number(item.persons) || 0) * (Number(item.unitPrice) || 0);

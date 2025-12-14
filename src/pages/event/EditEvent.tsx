@@ -19,7 +19,7 @@ const EditEvent = () => {
       if (found) {
         setBill(found);
       } else {
-        navigate('/'); // Redirect if not found
+        navigate('/');
       }
     }
   }, [id, bills, navigate]);

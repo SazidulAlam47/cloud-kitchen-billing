@@ -31,7 +31,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           sizes[size],
           className
         )}
-        disabled={isLoading || props.disabled} // Disable if loading
+        disabled={isLoading || props.disabled}
         {...props}
       >
         {isLoading ? (

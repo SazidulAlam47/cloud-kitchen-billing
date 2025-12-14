@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             <NavLink
               key={item.path}
               to={item.path}
-              onClick={() => onClose()} // Close sidebar on navigation on mobile
+              onClick={() => onClose()}
               className={({ isActive }) =>
                 cn(
                   "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02]",

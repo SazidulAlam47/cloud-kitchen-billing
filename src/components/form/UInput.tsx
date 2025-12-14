@@ -9,7 +9,7 @@ type UInputProps = {
     disabled?: boolean;
     readonly?: boolean;
     min?: string | number;
-    className?: string; // Allow passing standard classNames
+    className?: string;
 };
 
 const UInput = ({

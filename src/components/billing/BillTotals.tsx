@@ -3,12 +3,19 @@ import { formatCurrency } from '../../utils/formatters';
 
 const BillTotals = () => {
     const { control } = useFormContext();
+    const items = useWatch({ control, name: 'items' }) || [];
     const totalAmount = useWatch({ control, name: 'totalAmount' }) || 0;
     const amountInWords = useWatch({ control, name: 'amountInWords' });
+    
+    const totalPax = items.reduce((sum: number, item: any) => sum + (Number(item.persons) || 0), 0);
 
     return (
         <div className="bg-gray-50 p-6 border-t border-gray-200">
             <div className="flex flex-col items-end gap-2">
+                <div className="flex justify-between w-full max-w-md text-sm text-gray-600 mb-2">
+                    <span>Total Packages / Pax:</span>
+                    <span className="font-semibold">{totalPax}</span>
+                </div>
                 <div className="flex justify-between w-full max-w-md text-lg">
                     <span className="text-gray-600">Total Amount:</span>
                     <span className="font-bold text-gray-900">{formatCurrency(totalAmount)}</span>
