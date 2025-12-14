@@ -25,11 +25,10 @@ const Sidebar = () => {
             to={item.path}
             className={({ isActive }) =>
               cn(
-                "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200",
-                "hover:bg-slate-800 hover:scale-[1.02]",
+                "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:scale-[1.02",
                 isActive 
-                  ? "bg-primary-600 text-white shadow-lg shadow-primary-900/50" 
-                  : "text-slate-400 hover:text-white"
+                  ? "bg-primary-600 text-white shadow-lg shadow-primary-900/50 hover:bg-primary-800" 
+                  : "text-slate-400 hover:text-white hover:bg-slate-800"
               )
             }
           >

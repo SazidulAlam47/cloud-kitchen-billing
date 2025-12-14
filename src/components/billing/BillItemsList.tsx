@@ -50,16 +50,17 @@ const BillItemsList = ({ type }: BillItemsListProps) => {
                     </div>
                 ) : (
                     <div className="space-y-4">
-                        <div className="grid grid-cols-12 gap-4 font-medium text-sm text-gray-500 px-2">
-                            <div className="col-span-3">
+                        <div className="grid grid-cols-[3fr,3fr,1fr,1.5fr,1.5fr,0.5fr] gap-4 font-medium text-sm text-gray-500 px-2">
+                            <div>
                                 {isCorporate ? "Service Date" : "Package Name"}
                             </div>
-                            <div className="col-span-3">
+                            <div>
                                 {isCorporate ? "Package" : "Details (Type/Desc)"}
                             </div>
-                            <div className="col-span-2 text-right">Persons</div>
-                            <div className="col-span-2 text-right">Unit Price</div>
-                            <div className="col-span-2 text-right">Total</div>
+                            <div className="text-right">Persons</div>
+                            <div className="text-right">Unit Price</div>
+                            <div className="text-right">Total</div>
+                            <div className="text-center"></div>
                         </div>
 
                         {fields.map((field, index) => (
