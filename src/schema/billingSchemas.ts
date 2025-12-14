@@ -6,8 +6,8 @@ export const corporateItemSchema = z.object({
     message: "Invalid date format",
   }),
   packageType: z.string().min(1, 'Package type is required'),
-  persons: z.number().min(1, 'At least 1 person is required'),
-  unitPrice: z.number().min(1, 'Unit price must be greater than 0'),
+  persons: z.coerce.number().min(1, 'At least 1 person is required'),
+  unitPrice: z.coerce.number().min(1, 'Unit price must be greater than 0'),
 });
 
 export const corporateBillSchema = z.object({
@@ -19,7 +19,7 @@ export const corporateBillSchema = z.object({
     message: "Invalid date format",
   }),
   items: z.array(corporateItemSchema).min(1, "At least one item is required"),
-  totalAmount: z.number(),
+  totalAmount: z.coerce.number(),
   amountInWords: z.string(),
 });
 
@@ -28,8 +28,8 @@ export const eventItemSchema = z.object({
   packageName: z.string().min(1, 'Package Name is required'),
   packageType: z.string().optional(),
   description: z.string().optional(),
-  persons: z.number().min(1, 'At least 1 person is required'),
-  unitPrice: z.number().min(1, 'Unit price must be greater than 0'),
+  persons: z.coerce.number().min(1, 'At least 1 person is required'),
+  unitPrice: z.coerce.number().min(1, 'Unit price must be greater than 0'),
 });
 
 export const eventBillSchema = z.object({
@@ -39,6 +39,6 @@ export const eventBillSchema = z.object({
   contactNo: z.string().min(1, 'Contact Number is required'),
   date: z.string().min(1, 'Date is required'),
   items: z.array(eventItemSchema),
-  totalAmount: z.number(),
+  totalAmount: z.coerce.number(),
   amountInWords: z.string(),
 });

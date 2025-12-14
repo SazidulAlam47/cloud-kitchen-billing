@@ -4,23 +4,27 @@ import UInput from '../form/UInput';
 import USelect from '../form/USelect';
 import { PACKAGE_TYPES } from '../../data/chefData';
 import { formatCurrency } from '../../utils/formatters';
-import type { EventBill } from '../../types';
 
-interface EventPackageItemProps {
+interface BillItemRowProps {
     index: number;
     onRemove: () => void;
-    items: EventBill['items'];
+    item: any;
+    type: 'corporate' | 'event';
 }
 
-const EventPackageItem = ({ index, onRemove, items }: EventPackageItemProps) => {
-    const { setValue } = useFormContext<EventBill>();
-    const item = items[index];
+const BillItemRow = ({ index, onRemove, item, type }: BillItemRowProps) => {
+    const { setValue } = useFormContext();
     const lineTotal = (Number(item?.persons) || 0) * (Number(item?.unitPrice) || 0);
+    const isCorporate = type === 'corporate';
 
     return (
         <div className="grid grid-cols-12 gap-4 items-start bg-gray-50/50 p-3 rounded-lg border border-gray-100 group hover:border-gray-300 transition-all">
             <div className="col-span-3 space-y-2">
-                <UInput name={`items.${index}.packageName`} placeholder="Package Name" className="bg-white" />
+                {isCorporate ? (
+                    <UInput name={`items.${index}.date`} type="date" className="bg-white" />
+                ) : (
+                    <UInput name={`items.${index}.packageName`} placeholder="Package Name" className="bg-white" />
+                )}
             </div>
             <div className="col-span-3 space-y-2">
                 <USelect
@@ -35,7 +39,9 @@ const EventPackageItem = ({ index, onRemove, items }: EventPackageItemProps) => 
                         }
                     }}
                 />
-                <UInput name={`items.${index}.description`} placeholder="Description" className="bg-white text-xs" />
+                {!isCorporate && (
+                    <UInput name={`items.${index}.description`} placeholder="Description" className="bg-white text-xs" />
+                )}
             </div>
             <div className="col-span-2">
                 <UInput name={`items.${index}.persons`} type="number" min="0" className="text-right bg-white" />
@@ -46,7 +52,7 @@ const EventPackageItem = ({ index, onRemove, items }: EventPackageItemProps) => 
                     type="button"
                     onClick={onRemove}
                     className="absolute -right-8 top-5 -translate-y-1/2 p-1.5 text-gray-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                    title="Remove Package"
+                    title="Remove Item"
                 >
                     <Trash2 className="w-4 h-4" />
                 </button>
@@ -58,4 +64,4 @@ const EventPackageItem = ({ index, onRemove, items }: EventPackageItemProps) => 
     );
 };
 
-export default EventPackageItem;
+export default BillItemRow;

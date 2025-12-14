@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
-import { ArrowLeft, Save } from 'lucide-react';
-import { Button } from '../../components/ui/Button';
 import type { CorporateBill } from '../../types';
 import { amountInWords } from '../../utils/formatters';
-import CorporateBasicInfo from '../../components/corporate/CorporateBasicInfo';
-import CorporatePackageList from '../../components/corporate/CorporatePackageList';
-import CorporateTotals from '../../components/corporate/CorporateTotals';
+import BillBasicInfo from '../../components/billing/BillBasicInfo';
+import BillItemsList from '../../components/billing/BillItemsList';
+import BillTotals from '../../components/billing/BillTotals';
+import FormHeader from '../../components/form/FormHeader';
 
 interface CorporateFormFieldsProps {
     isEditing: boolean;
@@ -30,27 +29,17 @@ const CorporateFormFields = ({ isEditing, onCancel }: CorporateFormFieldsProps) 
 
     return (
         <div className="space-y-8">
-            <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <Button type="button" variant="secondary" onClick={onCancel} size="sm">
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back
-                    </Button>
-                    <h1 className="text-2xl font-bold text-gray-900">
-                        {isEditing ? 'Edit Corporate Bill' : 'Create Corporate Bill'}
-                    </h1>
-                </div>
-                <Button type="submit" disabled={items?.length === 0} className="shadow-lg hover:shadow-xl">
-                    <Save className="w-4 h-4 mr-2" />
-                    Save Bill
-                </Button>
-            </div>
+            <FormHeader
+                title={isEditing ? 'Edit Corporate Bill' : 'Create Corporate Bill'}
+                onCancel={onCancel}
+                isSaveDisabled={items?.length === 0}
+            />
 
-            <CorporateBasicInfo />
+            <BillBasicInfo type="corporate" />
 
             <div className="space-y-0 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                <CorporatePackageList />
-                <CorporateTotals />
+                <BillItemsList type="corporate" />
+                <BillTotals />
             </div>
         </div>
     );

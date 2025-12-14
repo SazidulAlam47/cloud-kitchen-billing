@@ -1,11 +1,10 @@
 import { useFormContext, useWatch } from 'react-hook-form';
 import { formatCurrency } from '../../utils/formatters';
-import type { EventBill } from '../../types';
 
-const EventTotals = () => {
-    const { control } = useFormContext<EventBill>();
+const BillTotals = () => {
+    const { control } = useFormContext();
     const totalAmount = useWatch({ control, name: 'totalAmount' }) || 0;
-    const amountAmounts = useWatch({ control, name: 'amountInWords' });
+    const amountInWords = useWatch({ control, name: 'amountInWords' });
 
     return (
         <div className="bg-gray-50 p-6 border-t border-gray-200">
@@ -16,11 +15,11 @@ const EventTotals = () => {
                 </div>
                 <div className="w-full max-w-md border-t border-gray-200 pt-2 text-right">
                     <span className="text-sm text-gray-500 italic block">In words:</span>
-                    <span className="font-medium text-gray-800">{amountAmounts}</span>
+                    <span className="font-medium text-gray-800">{amountInWords}</span>
                 </div>
             </div>
         </div>
     );
 };
 
-export default EventTotals;
+export default BillTotals;

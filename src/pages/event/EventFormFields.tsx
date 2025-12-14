@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
-import { ArrowLeft, Save } from 'lucide-react';
-import { Button } from '../../components/ui/Button';
 import type { EventBill } from '../../types';
 import { amountInWords } from '../../utils/formatters';
-import EventBasicInfo from '../../components/event/EventBasicInfo';
-import EventPackageList from '../../components/event/EventPackageList';
-import EventTotals from '../../components/event/EventTotals';
+import BillBasicInfo from '../../components/billing/BillBasicInfo';
+import BillItemsList from '../../components/billing/BillItemsList';
+import BillTotals from '../../components/billing/BillTotals';
+import FormHeader from '../../components/form/FormHeader';
 
 interface EventFormFieldsProps {
     isEditing: boolean;
@@ -29,27 +28,17 @@ const EventFormFields = ({ isEditing, onCancel }: EventFormFieldsProps) => {
 
     return (
         <div className="space-y-8">
-            <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <Button type="button" variant="secondary" onClick={onCancel} size="sm">
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back
-                    </Button>
-                    <h1 className="text-2xl font-bold text-gray-900">
-                        {isEditing ? 'Edit Event Bill' : 'Create Event Bill'}
-                    </h1>
-                </div>
-                <Button type="submit" disabled={items?.length === 0} className="shadow-lg hover:shadow-xl">
-                    <Save className="w-4 h-4 mr-2" />
-                    Save Bill
-                </Button>
-            </div>
+            <FormHeader
+                title={isEditing ? 'Edit Event Bill' : 'Create Event Bill'}
+                onCancel={onCancel}
+                isSaveDisabled={items?.length === 0}
+            />
 
-            <EventBasicInfo />
+            <BillBasicInfo type="event" />
 
             <div className="space-y-0 bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                <EventPackageList />
-                <EventTotals />
+                <BillItemsList type="event" />
+                <BillTotals />
             </div>
         </div>
     );
