@@ -1,6 +1,7 @@
 import { LayoutDashboard, FileText, Calendar, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '../../utils/cn';
+import MobileOverlay from '../shared/MobileOverlay';
 
 const navItems = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
@@ -16,16 +17,7 @@ interface SidebarProps {
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   return (
     <>
-      {/* Mobile Overlay */}
-      <div 
-        className={cn(
-          "fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        )}
-        onClick={onClose}
-      />
-
-      {/* Sidebar */}
+      <MobileOverlay isOpen={isOpen} onClose={onClose} />
       <div className={cn(
         "h-screen w-64 bg-slate-900 text-white flex flex-col fixed left-0 top-0 z-50 transition-transform duration-300 md:translate-x-0",
         isOpen ? "translate-x-0" : "-translate-x-full"
@@ -65,7 +57,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
         <div className="p-4 border-t border-slate-800">
           <div className="text-xs text-slate-500 text-center">
-            &copy; 2025 MetroChef
+            &copy; {new Date().getFullYear()} MetroChef
           </div>
         </div>
       </div>

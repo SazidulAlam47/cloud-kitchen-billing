@@ -5,7 +5,7 @@ import { amountInWords } from '../../utils/formatters';
 import BillBasicInfo from '../../components/billing/BillBasicInfo';
 import BillItemsList from '../../components/billing/BillItemsList';
 import BillTotals from '../../components/billing/BillTotals';
-import FormHeader from '../../components/form/FormHeader';
+import FormHeader from '../../components/shared/FormHeader';
 
 interface CorporateFormFieldsProps {
     isEditing: boolean;
