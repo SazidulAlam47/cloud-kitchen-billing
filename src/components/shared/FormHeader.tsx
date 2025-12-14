@@ -9,8 +9,8 @@ interface FormHeaderProps {
 
 const FormHeader = ({ title, onCancel, isSaveDisabled }: FormHeaderProps) => {
     return (
-        <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+        <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-0">
+            <div className="flex flex-col items-start gap-4 md:flex-row md:items-center">
                 <Button type="button" variant="secondary" onClick={onCancel} size="sm">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back
@@ -19,7 +19,7 @@ const FormHeader = ({ title, onCancel, isSaveDisabled }: FormHeaderProps) => {
                     {title}
                 </h1>
             </div>
-            <Button type="submit" disabled={isSaveDisabled} className="shadow-lg hover:shadow-xl">
+            <Button type="submit" disabled={isSaveDisabled} className="shadow-lg hover:shadow-xl w-full md:w-auto">
                 <Save className="w-4 h-4 mr-2" />
                 Save Bill
             </Button>
