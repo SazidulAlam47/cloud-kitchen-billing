@@ -49,8 +49,8 @@ const BillItemsList = ({ type }: BillItemsListProps) => {
                         {isCorporate ? 'No items added. Click "Add Row" to start.' : 'No packages added. Click "Add Package" to start.'}
                     </div>
                 ) : (
-                    <div className="space-y-4">
-                        <div className="grid grid-cols-[3fr,3fr,1fr,1.5fr,1.5fr,0.5fr] gap-4 font-medium text-sm text-gray-500 px-2">
+                    <div className="space-y-4 overflow-x-auto pb-4">
+                        <div className="grid grid-cols-[3fr,3fr,1fr,1.5fr,1.5fr,0.5fr] gap-4 font-medium text-sm text-gray-500 px-2 min-w-[800px]">
                             <div>
                                 {isCorporate ? "Service Date" : "Package Name"}
                             </div>

@@ -55,13 +55,17 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <DashboardHeader activeTab={activeTab} />
+    <div className="space-y-6 h-full flex flex-col">
+      <div className="flex-shrink-0">
+        <DashboardHeader activeTab={activeTab} />
+      </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-        <BillingTabs activeTab={activeTab} onChange={setActiveTab} />
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex-1 flex flex-col min-h-0 overflow-hidden">
+        <div className="flex-shrink-0">
+            <BillingTabs activeTab={activeTab} onChange={setActiveTab} />
+        </div>
 
-        <div className="p-6">
+        <div className="p-6 flex-1 overflow-y-auto">
           {bills.length === 0 ? (
             <EmptyState activeTab={activeTab} />
           ) : (

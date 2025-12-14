@@ -11,7 +11,7 @@ interface BillingTableProps {
 
 const BillingTable = ({ bills, activeTab, onEdit, onDelete }: BillingTableProps) => {
     return (
-        <Table>
+        <Table className="min-w-[1000px]">
             <TableHeader>
                 <TableRow>
                     <TableHead>No.</TableHead>

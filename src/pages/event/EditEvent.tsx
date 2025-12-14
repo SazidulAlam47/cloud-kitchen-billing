@@ -32,7 +32,11 @@ const EditEvent = () => {
 
   if (!bill) return <div>Loading...</div>;
 
-  return <EventForm initialData={bill} onSubmit={handleSubmit} isEditing />;
+  return (
+    <div className="h-full overflow-y-auto">
+      <EventForm initialData={bill} onSubmit={handleSubmit} isEditing />
+    </div>
+  );
 };
 
 export default EditEvent;

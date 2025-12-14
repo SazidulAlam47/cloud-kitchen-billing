@@ -32,7 +32,11 @@ const EditCorporate = () => {
 
   if (!bill) return <div>Loading...</div>;
 
-  return <CorporateForm initialData={bill} onSubmit={handleSubmit} isEditing />;
+  return (
+    <div className="h-full overflow-y-auto">
+      <CorporateForm initialData={bill} onSubmit={handleSubmit} isEditing />
+    </div>
+  );
 };
 
 export default EditCorporate;

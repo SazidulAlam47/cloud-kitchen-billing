@@ -18,7 +18,7 @@ const BillItemRow = ({ index, onRemove, item, type }: BillItemRowProps) => {
     const isCorporate = type === 'corporate';
 
     return (
-        <div className="grid grid-cols-[3fr,3fr,1fr,1.5fr,1.5fr,0.5fr] gap-4 items-start bg-gray-50/50 p-3 rounded-lg border border-gray-100 group hover:border-gray-300 transition-all">
+        <div className="grid grid-cols-[3fr,3fr,1fr,1.5fr,1.5fr,0.5fr] gap-4 items-start bg-gray-50/50 p-3 rounded-lg border border-gray-100 group hover:border-gray-300 transition-all min-w-[800px]">
             <div className="space-y-2">
                 {isCorporate ? (
                     <UInput name={`items.${index}.date`} type="date" className="bg-white" />

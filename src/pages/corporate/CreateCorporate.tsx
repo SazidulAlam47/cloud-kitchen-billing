@@ -15,7 +15,11 @@ const CreateCorporate = () => {
     navigate('/');
   };
 
-  return <CorporateForm onSubmit={handleSubmit} />;
+  return (
+    <div className="h-full overflow-y-auto">
+      <CorporateForm onSubmit={handleSubmit} />
+    </div>
+  );
 };
 
 export default CreateCorporate;

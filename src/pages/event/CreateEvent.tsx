@@ -15,7 +15,11 @@ const CreateEvent = () => {
     navigate('/');
   };
 
-  return <EventForm onSubmit={handleSubmit} />;
+  return (
+    <div className="h-full overflow-y-auto">
+      <EventForm onSubmit={handleSubmit} />
+    </div>
+  );
 };
 
 export default CreateEvent;
